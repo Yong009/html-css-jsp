@@ -22,6 +22,8 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl());
 		//회원목록.
 		map.put("/memberList.do", new MemberListControl());
+		//사원목록.
+		map.put("/empList.do", new EmpListControl()); //결과페이지: member/empList.jsp
 	}
 
 	@Override

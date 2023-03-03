@@ -2,7 +2,9 @@ package co.edu.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,30 +22,55 @@ public class JdbcServlet extends HttpServlet {
 		EmpDAO dao = new EmpDAO();
 
 		// 페이지 출력. 사번/이름(이름+성씨)/급여/부서
-		int ID = Integer.parseInt(req.getParameter("empId"));
 
-		Map<String, Object> result = dao.getEmpInfo(ID);
+		String eid = req.getParameter("empId");
 
-		PrintWriter out = resp.getWriter();
+		if (req.getMethod().equals("GET")) {
+			// 조회
+			Map<String, Object> result2 = dao.getEmpInfo(Integer.parseInt(eid));
+			Set<String> set = result2.keySet();
+			for (String key : set) {
+				int ID = Integer.parseInt(req.getParameter("empId"));
 
-		System.out.println(result.get("id"));
-		System.out.println(result.get("last_name"));
-		System.out.println(result.get("first_name"));
-		System.out.println(result.get("department_id"));
-		System.out.println(result.get("salary"));
-		// 페이지 작성.
+				Map<String, Object> result = dao.getEmpInfo(ID);
 
-		out.print(result);
+				PrintWriter out = resp.getWriter();
 
-		out.close();
+				System.out.println(result.get("id"));
+				System.out.println(result.get("last_name"));
+				System.out.println(result.get("first_name"));
+				System.out.println(result.get("department_id"));
+				System.out.println(result.get("salary"));
+				// 페이지 작성.
 
-		
-		int id = Integer.parseInt(req.getParameter("empId"));
-		
-		String sung = req.getParameter("last_name");
-		String name = req.getParameter("first_name");
-		String 
-		
-		
+				out.print(result);
+
+				out.close();
+
+				System.out.println("key" + key + ",val : " + result2.get(key));
+
+			}
+		} else if (req.getMethod().equals("POST")) {
+			// 등록
+			String empId = req.getParameter("empId");
+			String first = req.getParameter("first");
+			String last = req.getParameter("last");
+			String hire = req.getParameter("hire");
+			String job = req.getParameter("job");
+			String email = req.getParameter("email");
+
+			Map<String, Object> map = new HashMap<>();
+			map.put("empId", empId);
+			map.put("first", first);
+			map.put("last", last);
+			map.put("hire", hire);
+			map.put("job", job);
+			map.put("email", email);
+
+			int result2 = dao.insertEmp(map);
+
+			System.out.println(result2);
+		}
+
 	}
 }

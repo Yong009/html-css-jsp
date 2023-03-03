@@ -32,8 +32,8 @@ public class EmpDAO {
 			PreparedStatement psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, empId);
 			ResultSet rs = psmt.executeQuery();
-			if(rs.next()) {
-				
+			if (rs.next()) {
+
 				result.put("id", rs.getInt("employee_id"));
 				result.put("first_name", rs.getString("first_name"));
 				result.put("last_name", rs.getString("last_name"));
@@ -47,47 +47,29 @@ public class EmpDAO {
 		return result;
 	}
 
-	
-	
-	
-	public Map<String, Object> InsertEmp(int empId) {
+	// 단건 등록
+	public int insertEmp(Map<String, Object> map) {
 		// {키:값},{키:값},{키:값},{키:값} => map.get('키') 값을 반환
 		connect(); // conn객체.
-		
-		
-				
-		String sql = "insert into employees values( ?,?,?,?,?,?)";
-		
-		
-		
-		
-		Map<String, Object> result = new HashMap<>();
-		
-		
+
+		String sql = "insert into employees (employee_id, email, hire_date, job_id, last_name) values(?,?,?,?,?)";
+
 		try {
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, rs.get);
-			psmt.setString(2, );
-			psmt.setString(3, );
-			psmt.setString(4, );
-			psmt.setString(5, );
-			psmt.setString(6, );
-			
-			ResultSet rs = psmt.executeUpdate();
-			if(rs.next()) {
-				
-				result.put("id", rs.getInt("employee_id"));
-				result.put("first_name", rs.getString("first_name"));
-				result.put("last_name", rs.getString("last_name"));
-				result.put("salary", rs.getInt("salary"));
-				result.put("department_id", rs.getInt("department_id"));
-			}
+			psmt.setString(1, (String) map.get("empId"));
+			psmt.setString(2, (String) map.get("email"));
+			psmt.setString(3, (String) map.get("hire"));
+			psmt.setString(4, (String) map.get("job"));
+			psmt.setString(5, (String) map.get("last"));
+
+			int rs = psmt.executeUpdate(); // insert,update,delet
+
+			return rs;
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		return result;
+		return 0;
 	}
 
-	
 }

@@ -15,6 +15,6 @@ if (message != null) {
 <form action="memberSearch.do">
 	<input type="hidden" name="job" value="search"> 찾을ID: <input
 		type="text" name="id"> <input type="submit" value="찾기">
-
+	
 </form>
 <%@ include file="../includes/footer.jsp"%>

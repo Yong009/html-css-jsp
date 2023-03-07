@@ -23,8 +23,8 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberList.do">회원목록보기</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberInsertForm.do">회원등록페이지</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberSearchForm.do">회원조회</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="noticeList.do">공지사항목록</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="noticeWriterForm.do">공지사항등록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>

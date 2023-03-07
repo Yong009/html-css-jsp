@@ -28,7 +28,8 @@
 	<p>
 		메일:
 		<%=member.getMail()%></p>
-
+	
+	<a href="memberSearchForm.do">이동</a>
 <%@ include file="../includes/footer.jsp"%>
 </body>
 </html>

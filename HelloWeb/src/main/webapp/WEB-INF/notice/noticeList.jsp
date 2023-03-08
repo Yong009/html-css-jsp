@@ -1,3 +1,4 @@
+<%@page import="co.dev.vo.PageDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="co.dev.vo.NoticeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,9 +6,36 @@
 
 <%@ include file="../includes/sidebar.jsp"%>
 <%@ include file="../includes/top.jsp"%>
+<style>
+.center {
+  text-align: center;
+}
 
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 <%
 	List<NoticeVO> notices = (List<NoticeVO>) request.getAttribute("list");
+	PageDTO paging = (PageDTO) request.getAttribute("page");
 	// 공지사항 목록 table형식으로 화면 출력.
 %>
 	<table class ="table">
@@ -25,5 +53,24 @@
 		<%}%>
 		</tbody>
 	</table>
-
+	
+	<p><%=paging %></p>
+	
+	<div class="center">
+      <div class="pagination">	
+		<% if (paging.isPrev()) {%>
+			<a href="noticeList.do?page=<%=paging.getStartPage()-1 %>"> &laquo; </a>
+		<% } %>
+		<% for (int i = paging.getStartPage(); i <=paging.getEndpage(); i++){ %>
+			<% if(i==paging.getPage()) {%>
+			<a class="active" href ="noticeList.do?page=<%=i%>"> <%=i %> </a>
+		<%} else {%>
+		   <a  href ="noticeList.do?page=<%=i%>"><%=i %> </a>
+		   <%} %>
+		   <%} %>
+		<% if(paging.isNext()) {%>
+			<a href="noticeList.do?page=<%=paging.getEndpage()+1  %>"> &raquo;</a>
+		<%} %>
+	</div>
+</div>	
 <%@ include file="../includes/footer.jsp"%>

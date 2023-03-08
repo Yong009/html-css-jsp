@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.dev.controller.LoginFormControl;
+import co.dev.controller.LogoutControl;
+
 import co.dev.controller.MainControl;
 import co.dev.controller.MemberDeleteControl;
 import co.dev.controller.MemberDeleteFormControl;
@@ -23,6 +26,7 @@ import co.dev.controller.MemberUpdateFormControl;
 import co.dev.controller.NoticeAddControl;
 import co.dev.controller.NoticeFormControl;
 import co.dev.controller.NoticeListControl;
+import co.dev.controller.NoticeModifyControl;
 import co.dev.controller.NoticeSearchControl;
 
 public class FrontController extends HttpServlet {
@@ -30,13 +34,15 @@ public class FrontController extends HttpServlet {
 	// url - controller : map 등록.
 	Map<String, Control> map = new HashMap<>();
 	String enc;
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		enc = config.getInitParameter("encoding"); // UTF-8
-		
+
 		map.put("/main.do", new MainControl());
 		map.put("/login.do", new LoginControl());
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/logout.do", new LogoutControl());
 		// 회원목록.
 		map.put("/memberList.do", new MemberListControl());
 		// 회원등록화면
@@ -55,15 +61,16 @@ public class FrontController extends HttpServlet {
 		map.put("/memberDeleteForm.do", new MemberDeleteFormControl());
 		// 삭제처리
 		map.put("/memberDelete.do", new MemberDeleteControl());
-		 
+
 		// 사원목록.
 //		map.put("/empList.do", new EmpListControl()); // 결과페이지: member/empList.jsp
-		
+
 		// 공지사항관련.
-		map.put("/noticeList.do", new NoticeListControl()); //목록
-		map.put("/noticeWriterForm.do", new NoticeFormControl()); //공지사항등록화면.
-		map.put("/noticeAdd.do", new NoticeAddControl()); //공지사항등록
-		map.put("/noticeSearch.do", new NoticeSearchControl()); //공지사항상세조회. //service -getNotice(nid), mapper - selectNotice(nid)
+		map.put("/noticeList.do", new NoticeListControl()); // 목록
+		map.put("/noticeWriterForm.do", new NoticeFormControl()); // 공지사항등록화면.
+		map.put("/noticeAdd.do", new NoticeAddControl()); // 공지사항등록
+		map.put("/noticeSearch.do", new NoticeSearchControl()); // 공지사항상세조회. //service -getNotice(nid), mapper -
+		map.put("/noticeModify.do", new NoticeModifyControl()); //정보수정.														// selectNotice(nid)
 	}
 
 	@Override

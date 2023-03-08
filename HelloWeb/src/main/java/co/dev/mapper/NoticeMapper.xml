@@ -10,7 +10,7 @@
 		notice_id desc
 	</select>
 	
-	<select id="noticeListWithPaging" resultType="co.dev.vo.NoticeVO" parameterType="">
+	<select id="noticeListWithPaging" resultType="co.dev.vo.NoticeVO" parameterType="int">
 	    <![CDATA[
 	    	select notice_id, notice_writer, notice_title
 	    	from(select rownum rn, notice_id, notice_writer, notice_title
@@ -39,7 +39,15 @@
 		update notice set
 		hit_count = hit_count+1
 		where notice_id =#{nid}
-		
-		
 	</update>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from notice
+	</select>
+	
+	<select id="updateNotice" parameterType="co.dev.vo.NoticeVO">
+		update notice set notice_title =#{noticeTitle},	notice_subject =#{noticeSubject}
+		where notice_id= #{noticeId} 
+	
+	</select>
 </mapper>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="../includes/sidebar.jsp"%>
-<%@ include file="../includes/top.jsp"%>
+<jsp:include page="../includes/sidebar.jsp"/> 
+<jsp:include page="../includes/top.jsp"/> 
 
 <form action="noticeAdd.do" method="post" enctype="multipart/form-data">
 	<table class="table">
@@ -10,7 +10,7 @@
 			<td>제목</td><td><input type="text" name="title"></td>
 		<tr>
 		<tr>
-			<td>작성자</td><td><input type="text" name="writer" readonly value="<%=id%>"></td>
+			<td>작성자</td><td><input type="text" name="writer" readonly value="${id}"></td>
 		</tr>
 		<tr>
 			<td>내용</td><td><textarea cols= "30" rows="5" name="subject"></textarea></td>
@@ -57,6 +57,4 @@
 </script>
 
 
-
-
-<%@ include file="../includes/footer.jsp"%>
+<jsp:include page="../includes/footer.jsp"/> 

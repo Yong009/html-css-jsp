@@ -12,7 +12,7 @@
 	</definition>
 	<!--  /layouts/classic.tiles -->
 	<definition name="WILDCARD:*/*" extends="myapp.homepage">
-		<put-attribute name="body" value="/{1}/{2}.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 		
 	</definition>
 	

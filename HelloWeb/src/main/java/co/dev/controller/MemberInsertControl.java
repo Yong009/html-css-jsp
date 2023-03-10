@@ -33,7 +33,7 @@ public class MemberInsertControl implements Control {
 		vo.setMail(mail);
 		System.out.println("입력: " + vo);
 		
-		req.setAttribute("add", "http://localhost:8081/HelloWeb/memberist.do");
+		req.setAttribute("add", "http://localhost:8081/HelloWeb/memberList.do");
 		
 		MemberService service = new MemberServiceImpl();
 		boolean result = service.addMember(vo);

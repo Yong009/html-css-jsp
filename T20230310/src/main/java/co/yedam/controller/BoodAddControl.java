@@ -22,12 +22,12 @@ public class BoodAddControl implements Command {
 		String title = request.getParameter("title");
 		String press = request.getParameter("press");
 		String text = request.getParameter("text");
-//		String price = request.getParameter("price");
+		String price = request.getParameter("price");
 		
 		BookVO vo = new BookVO();
 		vo.setBookCode(code);
 		vo.setBookAuthor(writer);
-//		vo.setBookPrice(Integer.parseInt(price));
+		vo.setBookPrice(Integer.parseInt(price));
 		vo.setBookTitle(title);
 		vo.setBookPress(press);
 		vo.setBookDesc(text);

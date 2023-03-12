@@ -1,6 +1,11 @@
+<%@page import="co.yedam.vo.BookVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+<%
+List<BookVO> list = (List<BookVO>) request.getAttribute("vo");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +53,7 @@
                     <tbody>
                     <c:forEach var="list" items="${list}">
                         <tr>
-                            <td>${list.bookCode}</td>
+                            <td><a href='bookInfo.do?bookCode=${list.bookCode}'>${list.bookCode }</a></td>
                             <td>${list.bookTitle}</td>
                             <td>${list.bookAuthor}</td>
                             <td>${list.bookPress}</td>

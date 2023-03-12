@@ -1,5 +1,11 @@
+<%@page import="co.yedam.vo.BookVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+List<BookVO> list = (List<BookVO>) request.getAttribute("vo");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,32 +39,33 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
-                <table class="table">
+                <table class="table" action="BookInfo.do">
                     <tbody>
                         <tr>
                             <td>도서코드</td>
-                            <td><input type="text" name="book_code" value="B20230301"></td>
+                            <td><input type="text" name="code" value="${notice.bookCode }"></td>
                         </tr>
                         <tr>
                             <td>저자</td>
-                            <td><input type="text" name="book_code" value="홍길동"></td>
+                            <td><input type="text" name="writer" value="${notice.bookAuthor }"></td>
                         </tr>
                         <tr>
                             <td>도서명</td>
-                            <td><input type="text" name="book_code" value="우리의 정의란?"></td>
+                            <td><input type="text" name="title" value="${notice.bookTitle }"></td>
                         </tr>
                         <tr>
                             <td>출판사</td>
-                            <td><input type="text" name="book_code" value="정의출판사"></td>
+                            <td><input type="text" name="press" value="${notice.bookPress }"></td>
                         </tr>
                         <tr>
                             <td>도서평</td>
-                            <td><textarea cols="30" rows="5" name="book_code">정의란 무엇인가...</textarea></td>
+                            <td><textarea cols="30" rows="5" name="text">${notice.bookDesc }</textarea></td>
                         </tr>
                         <tr>
                             <td>판매가</td>
-                            <td><input type="text" name="book_code" value="25,000원"></td>
+                            <td><input type="text" name="book_code" value="${notice.bookPrice }"></td>
                         </tr>
+                        <%System.out.println(); %>
                         <tr>
                             <td align="center" colspan="2">
                                 <input class="btn btn-primary" type="button" value="수정">

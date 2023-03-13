@@ -15,7 +15,7 @@ public class BoodInfoControl implements Command {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bc = request.getParameter("bc");
+		String bc = request.getParameter("bookCode");
 		
 		BookService service = new BookServiceMybatis();
 		BookVO vo = service.getBookInfo(bc);

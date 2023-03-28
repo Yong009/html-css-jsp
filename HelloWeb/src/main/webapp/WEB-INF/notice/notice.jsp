@@ -2,61 +2,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="../includes/sidebar.jsp"%>
 <%@ include file="../includes/top.jsp"%>
-
 <%
-String mw =(String) session.getAttribute("id");
+	NoticeVO vo = (NoticeVO)request.getAttribute("notice");
 %>
-
-${notice}	
-
 
 	<table class="table">
 		
 		<tr>
-			<td>글번호</td><td><input type="text" name="nid" readonly value="${ notice.noticeId}"></td>
+			<td>글번호</td><td><input type="text" name="nid" readonly value="<%=vo.getNoticeId()%>"></td>
 			
 		</tr>
 		
 		<tr>
-			<td>제목</td><td><input type="text" name="title" readonly value="${notice.noticeTitle}"></td>
-			<td>조회수 ${notice.hitCount }</td>
+			<td>제목</td><td><input type="text" name="title" readonly value="<%=vo.getNoticeTitle()%>"></td>
+			<td>조회수 <%=vo.getHitCount() %></td>
 		</tr>
 		
 		<tr>
-			<td>작성자</td><td><input type="text" name="writer" value="${notice.noticeWriter}"></td>
+			<td>작성자</td><td><input type="text" name="writer" value="<%=vo.getNoticeWriter()%>"></td>
 		</tr>
 		<tr>
-			<td>내용</td><td><textarea cols= "30" rows="5" name="subject">${notice.noticeSubject}</textarea></td>
+			<td>내용</td><td><textarea cols= "30" rows="5" name="subject"><%=vo.getNoticeSubject() %></textarea></td>
 		</tr>
 		<tr>
 			<td>파일</td><td>
-			<c:choose>
-			 <c:when test="${notice.attach != null }">
-			 <input type="text" name="attach" value="${notice.attach}">
-			 </c:when>
-			 <c:otherwise>
-			 <input type="text" name="attach">
-			 </c:otherwise>
-			</c:choose>
-			
+			<%if(vo.getAttach() !=null){%>
+			<input type="text" name="attach" value="<%=vo.getAttach()%>">
+				
+			<%} else{ %>
+			<input type="text" name="attach">
+			<% }%> 
 			</td>
 		</tr>
-		
-			
-			
-			<tr>
+		<tr>
 			<td colspan="2" align="center">
 				<button id="modBtn">수정</button>
 				<button id="delBtn">삭제</button>
 			</td>
-			</tr>
-			
-			
-			
-					
+		</tr>			
 	</table>
 	<form id="myFrm" action="noticeModify.do">
 
@@ -71,19 +56,19 @@ ${notice}
 			
 			myFrm.append(document.querySelector('input[name="nid"]'));
 			myFrm.append(document.querySelector('input[name="title"]')); 
-			myFrm.append(document.querySelector('textarea[name="subject"]'));
+			myFrm.append(document.querySelector('input[name="subject"]'));
 			myFrm.submit();
 		
 		});
 		//삭제.
-		document.querySelector('#delBtn').addEventListener('click',function(){
-			let myFrm = document.querySelector('#myFrm');
-			myFrm.action = 'noticeRemove.do';  // myFrm.setAttribute('action','noticeRemove.do')
-			// FrontController에 NoticeRemoveControl();
-			// 서비스 : noticeRemove(int nid), mapper: deleteNotice(int nid); 
-			myFrm.append(document.querySelector('input[name="nid"]'));
-			myFrm.submit();
-		})
+		// document.querySelector('#delBtn').addEventListener('click',function(){
+		// 	let myFrm = document.querySelector('#myFrm');
+		// 	myFrm.action = 'noticeRemove.do';  // myFrm.setAttribute('action','noticeRemove.do')
+		// 	// FrontController에 NoticeRemoveControl();
+		// 	// 서비스 : noticeRemove(int nid), mapper: deleteNotice(int nid); 
+		// 	myFrm.append(document.querySelector('input[name="nid"]'));
+		// 	myFrm.submit();
+		// })
 
 	</script>
 

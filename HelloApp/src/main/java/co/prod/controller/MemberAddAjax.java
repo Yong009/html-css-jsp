@@ -1,5 +1,6 @@
 package co.prod.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,12 @@ public class MemberAddAjax implements Control {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MemberVO vo = new MemberVO();
 		//id,name,pw,mail,auth
 		vo.setId(request.getParameter("id"));

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.prod.common.DataSource;
 import co.prod.mapper.ProductMapper;
 import co.prod.vo.ProductVO;
+import co.prod.vo.ReplyVO;
 
 public class ProductServiceImpl implements ProductService {
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
@@ -17,5 +18,33 @@ public class ProductServiceImpl implements ProductService {
 
 		return mapper.productList();
 	}
+
+	@Override
+	public ProductVO getProduct(String code) {
+		
+		return mapper.selectProduct(code);
+	}
+
+	@Override
+	public List<ReplyVO> replyList(String code) {
+		
+		return mapper.replyList(code);
+	}
+
+	@Override
+	public boolean removeReply(int replyId) {
+		
+		return mapper.deleteReply(replyId) == 1;
+	}
+
+	@Override
+	public boolean addReply(ReplyVO vo) {
+		
+		return mapper.insertReply(vo) == 1;
+	}
+
+	
+	
+	
 
 }

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.prod.common.Control;
 import co.prod.service.ProductService;
-import co.prod.service.ProductServiceMybatis;
+import co.prod.service.ProductServiceImpl;
+
 import co.prod.vo.ProductVO;
 
 public class ProductListControl implements Control {
@@ -19,7 +20,7 @@ public class ProductListControl implements Control {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// db 결과 -> attribute("list")
 
-		ProductService service = new ProductServiceMybatis();
+		ProductService service = new ProductServiceImpl();
 		List<ProductVO> list = service.products();
 
 		request.setAttribute("list", list);

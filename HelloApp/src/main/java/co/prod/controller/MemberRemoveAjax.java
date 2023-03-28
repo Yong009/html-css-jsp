@@ -16,9 +16,9 @@ public class MemberRemoveAjax implements Control {
 		boolean result = service.removeMember(request.getParameter("id"));
 		String json= "";
 		if(result) {//{"retCode": success"}
-			json ="{\"retCode\": \"Success\"";
+			json ="{\"retCode\":\"Success\"}";
 		} else { //{"retCode": "Fail"}
-			json="{\"retCode\": \"Fail\"";
+			json="{\"retCode\":\"Fail\"}";
 		}
 		
 		

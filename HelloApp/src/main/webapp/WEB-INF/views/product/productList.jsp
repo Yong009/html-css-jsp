@@ -26,7 +26,7 @@
 						<div class="card-body p-4">
 							<div class="text-center">
 								<!-- Product name-->
-								<h5 class="fw-bolder">${list.productName}</h5>
+								<h5 class="fw-bolder"><a href="productInfo.do?code=${list.productCode}">${list.productName}</a></h5>
 								<!-- Product reviews-->
 								<div
 									class="d-flex justify-content-center small text-warning mb-2">

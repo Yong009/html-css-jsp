@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>안녕하세요</h3>
+	<h3>첫페이지</h3>
+	<jsp:forward page ="productList.do"></jsp:forward>
 </body>
 </html>

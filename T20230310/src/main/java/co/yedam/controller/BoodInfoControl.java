@@ -15,8 +15,12 @@ public class BoodInfoControl implements Command {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		
 		String code = request.getParameter("code");
+=======
+		String bc = request.getParameter("bookCode");
+>>>>>>> branch 'master' of https://github.com/Yong009/html-css-jsp.git
 		
 		BookService service = new BookServiceMybatis();
 		BookVO vo = service.getBookInfo(code);

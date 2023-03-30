@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>도서목록</title>
+</head>
+<body>
+    <!--입력화면-->
+    <table border="1">    
+        <tr>
+            <td>도서코드<input type="text" id="id"></td>
+        </tr>    
+       <tr>
+         <td>도서명<input type="text" id="name"></td>
+        </tr>
+    <tr>
+        <td> 저자 <input type="text" id="writer"></td> 
+    </tr>
+<tr>
+    <td>출판사 <input type="text" id="company"></td>
+</tr>   
+<tr><td> 금액 <input type="text" id="price"></td> 
+        </tr>
+    </table>
+
+        <tr>
+            <td colspan="2" align="center">
+                <button id="addBtn">저장</button>
+                <button id="delBtn">선택삭제</button> 
+
+            </td>
+
+
+            
+
+        
+        </tr>
+
+    </table>
+    <hr>
+    <table border="1">
+        <!-- 도서코드,도서명, 저자, 출판사, 가격-->
+        <thead>
+            <tr>
+                <th>도서코드 </th>  
+                <th>도서명</th> 
+                <th>도서저자 </th> 
+                <th>출판사 </th>
+                <th>금액</th>
+                <th>삭제 </th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            
+        </tbody>
+    </table>
+</body>
+
+<script>
+  document.getElementById('addBtn').addEventListener('click',function(e){
+    let mylist = document.querySelector('#list');
+    
+    // mylist.append(document.querySelector('input[name="id"]'));
+    // mylist.append(document.querySelector('input[name="name"]'));
+    // mylist.append(document.querySelector('input[name="writer"]'));
+    // mylist.append(document.querySelector('input[name="company"]'));
+    // mylist.append(document.querySelector('input[name="price"]'));
+    // mylist.submit();
+    
+    
+     
+    
+    let id = document.getElementById('id').value;
+     let nm = document.getElementById('name').value;
+     let wr = document.getElementById('writer').value;
+    let cp = document.getElementById('company').value;
+    let pr = document.getElementById('price').value;
+    
+     let book2 = new books(id,nm,wr,cp,pr);
+
+   list.append(book2);
+
+    
+   
+    
+  });
+
+  function makeTr(){
+    let tr= document.createElement('tr');
+    let td = document.createElement('td');
+
+  }
+
+    function books(id,nm,wr,cp,pr){
+        this.id=id;
+        this.nm=nm;
+        this.wr=wr;
+        this.cp=cp;
+        this.pr=pr;
+    }
+
+
+</script>
+</html>

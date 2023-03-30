@@ -15,15 +15,17 @@ public class BoodInfoControl implements Command {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bc = request.getParameter("bc");
+		
+		String code = request.getParameter("code");
 		
 		BookService service = new BookServiceMybatis();
-		BookVO vo = service.getBookInfo(bc);
+		BookVO vo = service.getBookInfo(code);
 		
-		System.out.println(vo);
+		
+		
+		
 		request.setAttribute("notice", vo);
 		
-		System.out.println(vo);
 		try {
 			request.getRequestDispatcher("WEB-INF/book/bookInfo.jsp").forward(request, response);
 		} catch(ServletException | IOException e) {

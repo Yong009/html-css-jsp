@@ -12,42 +12,38 @@
      
       
       
-      function drawChart() {
+     async function drawChart() {  //비동기방식
     	 //[{'Admin':1}.{Accounting':2}...]
-      fetch('chartAjax.do')
-      .then(resolve => resolve.json())
-      .then(result => {
-    	  
-    	  let outAry = [];
-    	  outAry.push(['dept','cnt per dept']);
-    	  result.forEach(dept => {
-    		
-    		let ary =[];
-    		for(prop in dept) {
-    			ary[0] = prop;
-    			ary[1] = dept[prop];
-    			
-    		}
-    		
-    		outAry.push(ary); // 가공.
-    		
-    		var data = google.visualization.arrayToDataTable(outAry);
-    		
-            var options = {
-              title: 'Person By Department'
-             
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-            chart.draw(data, options);
-            
-            
-    	  })
-    	  
-      })
-      .catch(reject => console.error(reject))
+    	 console.log("1");
     	 
-    	     	 
+     let outAry = [];
+     outAry.push(['dept','cnt per dept']);
+     let promise1 = await fetch('chartAjax.do') //promise객체.
+     let promise2 = await promise1.json(); // [{},{},{}]
+     console.log("1-1");
+     
+     promise2.forEach(dept => {
+    	 let ary = [];
+    	 for(let prop in dept){
+    		 ary[0] = prop;
+    		 ary[1] = dept[prop];
+    	 }
+    	 outAry.push(ary);
+     })
+    
+    	 console.log("1-2");
+      var data = google.visualization.arrayToDataTable(outAry);
+		
+      var options = {
+        title: 'Person By Department'
+       
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+      chart.draw(data, options);
+      
+      
+    console.log("2");	     	 
         
       }
     </script>

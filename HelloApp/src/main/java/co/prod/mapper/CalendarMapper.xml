@@ -14,7 +14,7 @@
   	insert into full_Calendar values(#{title},#{startDate},#{endDate})
   </insert>
   
-  <delete id="deleteCal" parameterType="String">
-  	delete from full_calendar where title = #{title}
+  <delete id="deleteCal" parameterType="co.prod.vo.CalendarVO">
+  	delete from full_calendar where title = #{title} and start_date =#{startDate} and end_date =#{endDate}
   </delete>
   </mapper>

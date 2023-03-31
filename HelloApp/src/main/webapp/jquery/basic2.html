@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basic2.html</title>
+    <style>
+
+
+    </style>
+
+
+    <script src="./jquery-3.6.4.min.js"></script>
+        <script>
+           // page 컨텐츠 다운로드 된 다음에 script실행.
+          // document.addEventListener('DomContentLoaded', function(){
+           
+            $(document).ready(function(){
+              
+              // elem.innerHTML = '<ul id="list"><li>Apple</li></ul>'
+                    $('div#show').html('<ul id="list"><li>Apple</li></ul>');
+              
+              // createElement  
+                    let li = $('<li>Banana</li>')//.text('Banana')
+                    .css('color','red')
+                    .attr('class','important');
+                                    
+               //li.text('Banana');
+                    console.log(li);
+                    $('#list').append(li);
+                    $('#list').append($('<li>Cherry</li>'),
+                                        $('<li />').text('Melon'),
+                                        $('<li />').text('Grape').on('click', function(){alert('clicked')})
+                                        
+                                        );
+                    $('li:eq(3)').css('background-color','yellow'); //배경색
+                    $('li:eq(3)').css('font-size','30px');     //사이즈
+                    $('li:gt(2)').css('font-style','italic');  //스타일
+                    $('li:gt(2)').css('color','green');
+                    $('li:not(:eq(0))').css('font-style','italic');
+                    $('li:contains(Melon)').css('font-weight','bold'); //굵기
+
+                    //input.
+                    $('input:text').val('user01');
+                    $('input[type="email"]').css('background-color','yellow').val('email');
+
+                    
+            });
+            
+           
+           
+       
+        </script>
+</head>
+
+<body>
+    <div id="show">
+       
+        <!-- <ul>
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Cherry</li>
+        </ul> -->
+    </div>
+    <form action="">
+        Id: <input type="text" name="" id=""><br>
+        password: <input type="password" name="" id=""><br>
+        Mail: <input type="email" name="" id=""><br>
+    </form>
+
+   <select name="left" multiple style ="height: 100px;">
+    <option value="">item1</option>
+    <option value="">item2</option>
+    <option value="">item3</option>
+    <option value="">item4</option>
+    <option value="">item5</option>
+   </select>
+   <button>+</button>
+   <button>-</button>
+
+   <select name="right" multiple style="height: 100px;">
+    <option value="">item6</option>
+    <option value="">item7</option>
+    <option value="">item8</option>
+    <option value="">item9</option>
+    <option value="">item10</option>
+
+
+
+</select>
+
+    <select name="left" id="" multiple="multiple">
+        <option value="">item1</option>
+        <option value="">item2</option>
+        <option value="">item3</option>
+        <option value="">item4</option>
+        <option value="">item5</option>
+
+
+    </select>
+</body>
+</html>

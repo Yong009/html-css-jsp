@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>JQuery</title>
+
+    <!-- <script src=./jquery-3.6.4.min.js"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        
+        // this: (객체: 객체자신, 함수: 전역객체(Window), 이벤트: event.target)
+        // $() => jquery객체: 메소드(함수)
+        // 자바스크립트: 객체(Document Object Model): document.children, document.queryselector() 
+        // document
+       
+       console.log(document);
+       console.log($(document));
+       
+        $(document).ready(function(){
+
+
+        });
+
+        function callWindow(){
+            console.log(this);
+        }
+        callWindow();
+
+        let obj = {
+            name:"홍길동",
+            age: 20,
+            showAge: function(){
+                console.log("이름은 " + this.name+", 나이는 " + this.age);
+                
+            }
+        }
+        obj.showAge();
+
+        $(document).ready(function() {
+            console.log(this);// window -> document
+            console.log(document.querySelector('p:nth-of-type(2)'));
+            console.log($("p:eq(0)")); // jquery객체의 모습
+            
+             $("p:eq(0)").on("click", function() {
+                $("p").css("color", "red");  //style {'font':bold, 'color': 'red' ,'backgroundcolor' : black}
+             });
+         
+             
+            //  document.querySelectorAll('p').forEach(function(pTag){
+            //     pTag.addEventListener('click',function(){
+            //         pTag.style.color='red';
+            //     })
+                
+            // })
+         });
+
+    </script>
+
+</head>
+
+ 
+
+<body>
+
+    <p>이제부터 제이쿼리를 다 같이 공부해보죠!!<br>
+
+    마우스로 글씨를 클릭해보세요!!</p>
+      <p>2번쨰 p태그</p>
+</body>
+
+ 
+
+</html>
+
+
+

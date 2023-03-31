@@ -13,5 +13,5 @@ public interface CalendarMapper {
 	public int insertCal(CalendarVO vo);
 	
 	//캘린더 삭제
-	public int deleteCal(String title);
+	public int deleteCal(CalendarVO vo);
 }

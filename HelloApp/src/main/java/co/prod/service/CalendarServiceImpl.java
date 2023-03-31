@@ -23,9 +23,9 @@ public class CalendarServiceImpl implements CalendarService{
 		return mapper.insertCal(vo)==1;
 	}
 	@Override
-	public boolean removeCal(String title) {
+	public boolean removeCal(CalendarVO vo) {
 		
-		return mapper.deleteCal(title)==1;
+		return mapper.deleteCal(vo)==1;
 	}
 
 	

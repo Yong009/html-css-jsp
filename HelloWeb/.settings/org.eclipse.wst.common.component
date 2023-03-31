@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-        
-    <wb-module deploy-name="HelloWeb">
-                
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                
-        <property name="context-root" value="HelloWeb"/>
-                
-        <property name="java-output-path" value="/HelloWeb/build/classes"/>
             
-    </wb-module>
     
+    <wb-module deploy-name="HelloWeb2">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                        
+        
+        <property name="java-output-path" value="/HelloWeb2/build/classes"/>
+        <property name="context-root" value="HelloWeb2"/>
+                    
+    
+    </wb-module>
+        
+
 </project-modules>

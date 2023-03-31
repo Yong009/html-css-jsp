@@ -14,5 +14,5 @@ public interface CalendarService {
 	public boolean addCal(CalendarVO vo);
 	
 	// 캘린더 삭제
-	public boolean removeCal(String title);
+	public boolean removeCal(CalendarVO vo);
 }

@@ -16,11 +16,18 @@ public class CalendarRemove implements Control {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
 		String title = request.getParameter("title");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		
+		CalendarVO vo = new CalendarVO();
+		vo.setTitle(title);
+		vo.setStartDate(start);
+		vo.setEndDate(end);
 		
 		
 		CalendarService service = new CalendarServiceImpl();
 		
-		boolean result = service.removeCal(title);
+		boolean result = service.removeCal(vo);
 		
 		String json = "";
 		if(result) {

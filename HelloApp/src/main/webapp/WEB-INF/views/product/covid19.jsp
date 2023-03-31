@@ -105,7 +105,7 @@
 			/* window.open('map.do?lng='+lng+'&lat='lat,'_blank') */
 
 		}
-
++
 		
 		
 		

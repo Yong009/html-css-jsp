@@ -19,9 +19,13 @@ import co.prod.controller.ChartControl;
 import co.prod.controller.CovidForm;
 import co.prod.controller.MapForm;
 import co.prod.controller.MemberAddAjax;
+import co.prod.controller.MemberJquery;
 import co.prod.controller.MemberListAjax;
 import co.prod.controller.MemberListControl;
+import co.prod.controller.MembersListJquery;
 import co.prod.controller.MemberRemoveAjax;
+import co.prod.controller.MemberRemoveJquery;
+import co.prod.controller.MembersAddJquery;
 import co.prod.controller.MembersControl;
 import co.prod.controller.ProductInfoControl;
 import co.prod.controller.ProductListControl;
@@ -62,6 +66,15 @@ public class FrontController extends HttpServlet {
 		map.put("/replySearchAjax.do", new ReplySearchAjax());
 		// 상품댓글 수정
 		map.put("/replyModifyAjax.do", new ReplyModifyAjax());
+		
+		// jquery용 ajax.
+		map.put("/memberJquery.do", new MemberJquery());
+		// 목록을 가지고 오도록. memberListJquery.do.
+		map.put("/membersListJquery.do", new MembersListJquery());
+		// jquery 등록
+		map.put("/membersAddJquery.do", new MembersAddJquery());
+		// 삭제
+		map.put("/memberRemoveJquery.do", new MemberRemoveJquery());
 		
 		// chart
 		map.put("/chart.do", new ChartControl());

@@ -9,5 +9,5 @@ public class MemberVO {
 	private String passwd;
 	private String mail;
 	private String auth;
-
+	
 }

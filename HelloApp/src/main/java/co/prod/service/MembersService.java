@@ -12,5 +12,5 @@ public interface MembersService {
 	public boolean addMembers(MembersVO vo);
 	
 	// 회원삭제(jquery)
-	
+	public boolean removeMembers(String[] users);
 }

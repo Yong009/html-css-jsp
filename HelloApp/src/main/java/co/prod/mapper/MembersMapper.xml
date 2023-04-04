@@ -15,10 +15,11 @@
 		values(#{memberId},#{memberName},#{memberPw},#{memberAddr},#{memberTel})
 	</insert>
 
-	<update id="deleteMembers" parameterType="co.prod.vo.MembersVO">
+	<update id="deleteMembers" parameterType="String">
 		delete from members
-		<foreach collection="list" item="item" open=" where member_id in (" close=")" separator=",">
-		 #{item.memberId}
+		<foreach collection="array" item="member" 
+		open="where member_id in (" close=")" separator=",">
+		 #{member}
 		</foreach>
 	</update>
 	

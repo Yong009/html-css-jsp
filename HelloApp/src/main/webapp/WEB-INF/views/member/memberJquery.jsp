@@ -30,7 +30,7 @@
 
                         $('#list').append(
                             //tr>td*4 생성
-                            $('<tr />').append($('<td />').text(member.memberId),
+                            $('<tr id='+ member.memberId+' />').append($('<td />').text(member.memberId),
                                 $('<td />').text(member.memberName),
                                 $('<td />').text(member.memberAddr),
                                 $('<td />').text(member.memberTel),
@@ -60,13 +60,12 @@
 
             $('#delSelected').on('click', function (e) {
                 e.preventDefault();
-                let memberIdAray = {}
+                let memberIdAray = '';
                 console.log($('#list input:checked'));
                 $('#list input:checked').each(function (idx, item) {
-                	
-                	console.log($(item).parent().parent().attr('id'));
+                	                	
                     //memberIdAray.push({'memberId':$(item).parent().parent().memberId})
-                	memberIdAry.memberId = $(item).parent().parent().attr('id');
+                	memberIdAray += '&memberId='+ $(item).parent().parent().attr('id');
                     //$(item).parentsUntil('tbody').remove();
                 })
 					console.log(memberIdAray);
@@ -75,15 +74,20 @@
                 	$.ajax({
                 		url:'memberRemoveJquery.do', //호출할 컨트롤
                 		method:'post',
-                		data: {memberId:'user01', memberId:'user02'},
+                		data: memberIdAray.substring(1),
                 		success: function(result){
-                			
+                			if(result.retCode =='Success'){
+                				alert('success');
+                				$('#list input:checked').closest('tr').remove();
+                				
+                			}else
+                				alert('error!!')
                 		},
                 		error: function(reject){
                 			console.log(reject)
                 		}
                 	})
-                	}
+                	
             })
 
             function rowInsertFnc(e) {

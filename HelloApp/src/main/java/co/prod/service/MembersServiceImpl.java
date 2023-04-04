@@ -22,5 +22,10 @@ public class MembersServiceImpl implements MembersService{
 		
 		return mapper.insertMembers(vo)==1;
 	}
+	@Override
+	public boolean removeMembers(String[] users) {
+		
+		return mapper.deleteMembers(users)>0;
+	}
 
 }

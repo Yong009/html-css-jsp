@@ -10,4 +10,7 @@ public interface MembersMapper {
 	
 	//등록
 	public int insertMembers(MembersVO vo);
+	
+	//삭제
+	public int deleteMembers(String[] users);
 }

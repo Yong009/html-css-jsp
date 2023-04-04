@@ -2,6 +2,7 @@ package co.prod.service;
 
 import java.util.List;
 
+import co.prod.vo.EmpVO;
 import co.prod.vo.MemberVO;
 
 
@@ -24,5 +25,11 @@ public interface MemberService {
 	
 	// id/pw 로그인 처리.
 	public MemberVO login(MemberVO vo);
+	
+	// 사원 목록
+	public List<EmpVO> employeeList();
+	
+	// 사원 등록
+	public boolean addEmployees(EmpVO vo);
 	
 }
